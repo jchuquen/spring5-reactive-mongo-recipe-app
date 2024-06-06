@@ -19,7 +19,9 @@ import static org.mockito.Mockito.*;
 
 public class UnitOfMeasureServiceImplTest {
 
-    UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
+    UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand =
+        new UnitOfMeasureToUnitOfMeasureCommand();
+
     UnitOfMeasureService service;
 
     @Mock
@@ -29,7 +31,10 @@ public class UnitOfMeasureServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        service = new UnitOfMeasureServiceImpl(unitOfMeasureReactiveRepository, unitOfMeasureToUnitOfMeasureCommand);
+        service = new UnitOfMeasureServiceImpl(
+            unitOfMeasureReactiveRepository,
+            unitOfMeasureToUnitOfMeasureCommand
+        );
     }
 
     @Test
