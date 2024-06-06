@@ -28,14 +28,16 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Autowired
-    UnitOfMeasureReactiveRepository reactiveRepository;
+    private final UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
 
     public RecipeBootstrap(CategoryRepository categoryRepository,
-                           RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
+                           RecipeRepository recipeRepository,
+                           UnitOfMeasureRepository unitOfMeasureRepository,
+                           UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository) {
         this.categoryRepository = categoryRepository;
         this.recipeRepository = recipeRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
+        this.unitOfMeasureReactiveRepository = unitOfMeasureReactiveRepository;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 
         log.error("#######");
-        log.error("Count: " + reactiveRepository.count());
+        log.error("Count: " + unitOfMeasureReactiveRepository.count().block().toString());
     }
 
     private void loadCategories(){
